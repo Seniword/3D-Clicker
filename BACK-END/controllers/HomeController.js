@@ -1,6 +1,6 @@
 export default async function home(req, res) {
     try{
-        res.send("test")
+        res.send("cc")
     } catch(err){
         res.status(500).send(err.message);
     }

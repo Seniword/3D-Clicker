@@ -18,8 +18,7 @@ mongoose.connect(db)
     .then(init)
     .catch(error => console.error(error));
 
-async function init()
-{
+async function init() {
     try
     {
         app.use("/", routes)

@@ -32,15 +32,6 @@ export function encryptPassword(password, email)
     });
 }
 
-export function comparePasswords(password, hashword)
-{
-    bcrypt.compare(password, hashword, (err, doesPasswordsMatch) => {
-        return err == null ?
-            doesPasswordsMatch :
-            err;
-    });
-};
-
 export default function signup(req, res) {
     try
     {
@@ -66,7 +57,6 @@ export default function signup(req, res) {
             res.status(400).send("Password contains unauthorized characters or does not fit the length requirements.");
             return;
         }
-
 
         let insertQuery = "INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)";
 

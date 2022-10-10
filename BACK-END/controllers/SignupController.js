@@ -1,28 +1,97 @@
-import {UsersModel} from "../models/Users.js";
+import {connection} from "../server.js"
 import dotenv from "dotenv";
+import mysql from "mysql";
+import bcrypt from "bcrypt";
 
 dotenv.config();
 
-export default async function signup(req, res) {
+export function encryptPassword(password, email)
+{
+    bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(password, salt, function (err, hash) {
+
+            let insertQuery = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
+
+            let query = mysql.format(
+                insertQuery,
+                [
+                    "users",
+                    "password",
+                    hash,
+                    "email",
+                    email
+                ]);
+
+            connection.query(query, (err, response) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+            });
+        });
+    });
+}
+
+export function comparePasswords(password, hashword)
+{
+    bcrypt.compare(password, hashword, (err, doesPasswordsMatch) => {
+        return err == null ?
+            doesPasswordsMatch :
+            err;
+    });
+};
+
+export default function signup(req, res) {
     try
     {
-        let user = new UsersModel({
-            name: req.body.name,
-            email: req.body.email
-        });
-        if(req.body.password === req.body.passwordConfirm)
-        {
-            user.setPassword(req.body.password);
-            user.save(function(err)
-            {
-                if(err) console.log(err);
-                res.status(200).send("yes");
-            })
+        let mailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
+        let usernameRegex = /^[A-Za-z][A-Za-z0-9_é ]{3,29}$/
+        let passwordRegex = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/
 
+        if(!usernameRegex.test(req.body.username))
+        {
+            res.status(400).send("Username contains unauthorized characters or does not fit the length requirements.");
+            return;
         }
 
-        else
-            res.status(400).send("Passwords do not match.");
+        if(!mailRegex.test(req.body.email))
+        {
+            res.status(400).send("Email contains unauthorized characters or does not fit the length requirements.");
+            return;
+        }
+
+        if(!passwordRegex.test(req.body.password))
+        {
+            //TODO: show password requirements on front form
+            res.status(400).send("Password contains unauthorized characters or does not fit the length requirements.");
+            return;
+        }
+
+
+        let insertQuery = "INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)";
+
+        let query = mysql.format(
+            insertQuery,
+            [
+                "users",
+                "email",
+                "username",
+                "password",
+                req.body.email,
+                req.body.username,
+                ""
+            ]);
+
+        encryptPassword(req.body.password, req.body.email);
+
+        connection.query(query, (err, response) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+        });
+
+        res.status(200).send("User saved.");
 
     } catch(err)
     {

@@ -2,31 +2,43 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
+import mysql from "mysql"
 
 import routes from "./routes.js"
 
 const app = express();
 
 dotenv.config();
-const { APP_LOCALHOST : localhost, APP_PORT : port, DB_URL : db } = process.env;
+const { APP_LOCALHOST : localhost,
+        APP_PORT : port,
+        DB_USER : db_user,
+        DB_PASS : db_pass,
+        DB_NAME : db_name,
+} = process.env;
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect(db)
-    .then(init)
-    .catch(error => console.error(error));
+export const connection = mysql.createConnection({
+    host: localhost,
+    user: db_user,
+    password: db_pass,
+    database: db_name,
+})
 
-async function init() {
-    try
-    {
-        app.use("/", routes)
-    }
-    catch (err)
-    {
-        console.error(err)
-    }
+connection.connect((err) => {
+    if (err) throw err;
+    console.log("Connected to MySQL!")
+})
+
+try
+{
+    app.use("/", routes)
+}
+catch (err)
+{
+    console.error(err)
 }
 
 app.listen(port, () => {

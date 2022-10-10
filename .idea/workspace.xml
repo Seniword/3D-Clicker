@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4cccb051-0ccb-4faf-a1df-6df0dc3993e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BACK-END/controllers/SigninController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BACK-END/controllers/SignupController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BACK-END/models/UserStats.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BACK-END/models/Users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACK-END/controllers/SignupController.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/controllers/SignupController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BACK-END/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BACK-END/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACK-END/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BACK-END/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,20 +38,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/wamp64/www/3D-Clicker",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -64,6 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1664616849723</updated>
       <workItem from="1664616859164" duration="5137000" />
+      <workItem from="1665381591977" duration="9097000" />
     </task>
     <servers />
   </component>

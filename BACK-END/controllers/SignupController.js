@@ -2,6 +2,7 @@ import {connection} from "../server.js"
 import dotenv from "dotenv";
 import mysql from "mysql";
 import bcrypt from "bcrypt";
+import {response} from "express";
 
 dotenv.config();
 
@@ -33,9 +34,12 @@ export function encryptPassword(password, email)
 }
 
 export default function signup(req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     try
     {
-        let mailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
+
+        let mailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
         let usernameRegex = /^[A-Za-z][A-Za-z0-9_é ]{3,29}$/
         let passwordRegex = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/
 
@@ -57,6 +61,25 @@ export default function signup(req, res) {
             res.status(400).send("Password contains unauthorized characters or does not fit the length requirements.");
             return;
         }
+
+        let verifMailQuery = 'SELECT ?? IN ?? WHERE ?? = ?';
+        let verifMail = mysql.format(
+            verifMailQuery,
+            [
+                "email",
+                "users",
+                "email",
+                req.body.email
+            ]);
+        connection.query(verifMail, (err, response) => {
+            if(err) console.error(err)
+
+            if(data[0])
+            {
+                res.status(400).send("Mail found");
+                return;
+            }
+        })
 
         let insertQuery = "INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)";
 

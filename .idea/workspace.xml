@@ -5,13 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4cccb051-0ccb-4faf-a1df-6df0dc3993e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BACK-END/controllers/classSelectionController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BACK-END/controllers/AchievementController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BACK-END/controllers/LogTypeController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/components/forms.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/about.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/contact.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/home.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/login.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACK-END/controllers/SigninController.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/controllers/SigninController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BACK-END/controllers/SignupController.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/controllers/SignupController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACK-END/models/UserStats.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACK-END/models/Users.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACK-END/controllers/classSelectionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/controllers/ClassSelectionController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BACK-END/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACK-END/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/logo.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,20 +52,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/wamp64/www/3D-Clicker",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/wamp64/www/3D-Clicker/FRONT-END/3dclicker/src/routes&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\3D-Clicker\FRONT-END\3dclicker\src\routes" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -64,6 +81,10 @@
       <updated>1664616849723</updated>
       <workItem from="1664616859164" duration="5137000" />
       <workItem from="1665381591977" duration="18111000" />
+      <workItem from="1665476082954" duration="15000" />
+      <workItem from="1665748408255" duration="1070000" />
+      <workItem from="1665811837912" duration="15416000" />
+      <workItem from="1665990032310" duration="311000" />
     </task>
     <servers />
   </component>

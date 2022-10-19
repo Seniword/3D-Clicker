@@ -1,20 +1,20 @@
-import React, {useState, useEffect, Fragment} from "react";
-import axios from "axios";
+import React, {useState, Fragment} from "react";
 import { useNavigate } from "react-router-dom";
+import instance from '../InstanceHttp.js';
 
-const instance = axios.create({
-    baseURL: 'http://localhost/8000/'
-})
-
-export const RegisterForm = (props) => {
+export const RegisterForm = () => {
 
     const navigate = useNavigate();
 
-    const {email, handleEmailChange, setLogType} = props;
+    const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [errors, setErrors] = useState([]);
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    }
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
@@ -45,20 +45,12 @@ export const RegisterForm = (props) => {
                 password : password
             }
 
-            console.log(user)
-
             instance
                 .post('/signup', user)
                 .then((data) => {
-                    switch(data.data){
-                        case "Mail found":
-                            setErrors(prevState => [...prevState, "Votre email est déjà liée à un compte. Veuillez vous connecter."])
-                            navigate("/");
+                    localStorage.setItem('jwtToken', data.data);
 
-                        case "User saved." :
-                            //TODO : Gerer le jwt
-                            navigate("/")
-                    }
+                    navigate('/classSelection');
                 })
                 .catch((err) => console.error(err));
         }
@@ -94,9 +86,53 @@ export const RegisterForm = (props) => {
     )
 }
 
-export const ConnectionForm = () => {
+export const ConnectionForm = (props) => {
+
+    const {setIsConnected} = props;
+    const navigate = useNavigate();
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleUsernameChange = (e) => {
+        setUsername(e.target.value)
+    }
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const user = {
+            username : username,
+            password : password
+        }
+
+
+        instance
+            .post('/signin', user)
+            .then((data) => {
+                localStorage.setItem('jwtToken', data.data);
+                setIsConnected(true)
+
+                navigate('/game');
+            })
+            .catch((err) => console.error(err));
+    }
 
     return(
-        <p>Connection</p>
+        <form method="post" onSubmit={(e) => {handleSubmit(e)}}>
+            <label>
+                Nom d'utilisateur :
+                <input type="text" value={username} onChange={handleUsernameChange} />
+            </label>
+            <label>
+                Mot de passe :
+                <input type="password" value={password} onChange={handlePasswordChange} />
+            </label>
+            <input type="submit" value="Me connecter" />
+        </form>
         )
 }

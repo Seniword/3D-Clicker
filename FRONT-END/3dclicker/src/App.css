@@ -1,38 +1,131 @@
-.App {
-  text-align: center;
+/* ********** Global Elements ************ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+
+html
+{
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bg
+{
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: -100;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bg img
+{
+    /*background-image: url("../public/img/mountainBG.jpg");*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+    max-width: 50%;
+    max-height: 50%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.container
+{
+    z-index: 100;
 }
 
-.App-link {
-  color: #61dafb;
+.title
+{
+    text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav
+{
+    width: 10%;
+    margin: 0 auto;
+    background-color: gray;
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
+
+nav ul
+{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li
+{
+    float: left;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+nav ul::after
+{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+nav a
+{
+    display: block;
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid transparent;
+    padding: 10px 0px;
+}
+
+nav a:hover
+{
+    color: orange;
+    border-bottom: 2px solid gold;
+}
+
+.submenu
+{
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav > ul li:hover .submenu
+{
+    display: block;
+}
+
+.submenu li
+{
+    float: none;
+    width: 100%;
+    text-align: right;
+}
+
+.submenu a
+{
+    padding: 10px;
+    border-bottom: none;
+}
+
+.submenu a:hover
+{
+    border-bottom: none;
+    background-color: RGBa(200, 200, 200, 0.1);
+}
+
+.menu::after
+{
+    content: " ▼";
+    font-size: 12px;
+}
+/* ************* Game Component ************** */

@@ -1,9 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
 import cors from "cors";
 import mysql from "mysql"
-
 import routes from "./routes.js"
 
 const app = express();
@@ -16,9 +14,11 @@ const { APP_LOCALHOST : localhost,
         DB_NAME : db_name,
 } = process.env;
 
-app.use(express.urlencoded({extended: true}));
-app.use(express.json())
 app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({extended: true}));
+
+
 
 export const connection = mysql.createConnection({
     host: localhost,

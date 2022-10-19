@@ -1,53 +1,25 @@
-import React, {useState, useEffect, Fragment} from "react";
-import axios from 'axios';
-import {RegisterForm, ConnectionForm} from '../components/forms'
+import React, {Fragment} from "react";
+import {ConnectionForm} from '../components/forms'
+import {useNavigate} from "react-router-dom";
 
-const instance = axios.create({
-    baseURL : 'http://localhost:8000/'
-})
 
-export const Login = () => {
+export const Login = (props) => {
 
-    const [logType, setLogType] = useState('');
-    const [email, setEmail] = useState('');
+    const {setIsConnected} = props;
+    const navigate = useNavigate()
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    }
-
-    const handleSubmit = (e) => {
+    const showRegisterForm = (e) => {
         e.preventDefault();
 
-        const user = {
-            email : email
-        }
-
-        instance
-            .post('/logType', user)
-            .then((data) => {setLogType(data.data)})
-            .catch((err) => {console.error(err)})
+        navigate("/register");
     }
 
     return (
         <Fragment>
-            {(logType === '')
-                ? <form method="post" onSubmit={(e) => {handleSubmit(e)}}>
-                    <label>
-                        Mail :
-                        <input type="text" value={email} onChange={handleEmailChange} />
-                    </label>
-                    <input type="submit" value="Connexion / Inscription" />
-                </form>
-                : logType === 'register'
-                    ? <RegisterForm
-                        email={email}
-                        handleEmailChange={handleEmailChange}
-                        setLogType={setLogType}/>
-                    : <ConnectionForm
-                        email={email}
-                        onEmailChange={handleEmailChange}
-                        setLogType={setLogType}/>
-            }
+            <ConnectionForm setIsConnected={setIsConnected}/>
+
+            <p>Vous n'avez pas de compte ?</p>
+            <a href="register" onClick={showRegisterForm}>Créez-en un ici.</a>
         </Fragment>
     )
 }

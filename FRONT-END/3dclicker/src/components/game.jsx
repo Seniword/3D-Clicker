@@ -25,8 +25,10 @@ export const Game = (props) => {
     })
 
     useEffect(() => {
+        // on définit le header avec le token jwt
         instance.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('jwtToken')}`
 
+        //on récupère les données utilisateur, ici, son argent et ses dégâts (avec les armes) seulement s'il est connecté
         instance
             .get("/getMoney", )
             .then((data) => {
@@ -57,6 +59,7 @@ export const Game = (props) => {
     let allWeapons;
     let DPSsum = 0;
     let DPCsum = 0;
+    //récupération des dégâts des armes pour l'afficher sur le front
     allWeapons = weapons.map((weapon, index) => {
         DPCsum += weapon.dpc * weapon.quantity;
         DPSsum += weapon.dps * weapon.quantity;
@@ -64,6 +67,8 @@ export const Game = (props) => {
         }
     );
 
+    //besoin de ce use effect pour remettre à jour et dans la DB et pour l'affichage front l'argent du joueur
+    //car à chaque fois qu'un monstre est éliminé, il gagne de l'argent
     useEffect(() => {
         instance
             .get("/getMoney")

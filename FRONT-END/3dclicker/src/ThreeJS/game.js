@@ -31,6 +31,7 @@ var HEIGHT = 600
 
 export function init() {
 
+    // instanciation de la caméra utilisée sur la scène
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2500);
     camera.position.z = 0;
     camera.position.y = 3;
@@ -38,9 +39,11 @@ export function init() {
 
     camera.lookAt(new THREE.Vector3(0, 0, 0));
 
+    // instanciation de la scene threejs
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0);
 
+    // instanciation de la lumière
     const light = new THREE.AmbientLight(0xffffff, 1);
     scene.add(light);
 
@@ -57,12 +60,12 @@ export function init() {
     pl.castShadow = true;
     scene.add(pl);
 
+    // création de la géométrie utilisée pour trouver ou l'utilisateur clique, mais non affichée sur la scène
     const geometry = new THREE.BufferGeometry();
     geometry.setFromPoints( [ new THREE.Vector3(), new THREE.Vector3() ] );
-
     line = new THREE.Line( geometry, new THREE.LineBasicMaterial() );
-    // scene.add( line );
 
+    // création de la barre de vie du monstre
     let healthBar = new THREE.Mesh(new THREE.PlaneGeometry(1, 0.25), new THREE.MeshPhongMaterial({
         color: 0x00FF00,
         polygonOffset: true,
@@ -73,6 +76,7 @@ export function init() {
     healthBar.position.set(0, 1, 0);
     scene.add(healthBar)
 
+    //création de la barre de vie perdue du monstre
     let damageBar = new THREE.Mesh(new THREE.PlaneGeometry(1, 0.25), new THREE.MeshPhongMaterial({
         color: 0xFF0000,
         polygonOffset: true,
@@ -83,11 +87,14 @@ export function init() {
     damageBar.position.set(0, 1, 0);
     scene.add(damageBar)
 
+    // chargement des textures du sol
     let textureLoader = new THREE.TextureLoader();
     let colorMap = textureLoader.load("../../textures/floor/forest_floor_albedo.png")
     let normalMap = textureLoader.load("../../textures/floor/forest_floor_Normal-dx.png")
     let aoMap = textureLoader.load("../../textures/floor/forest_floor_ao.png")
 
+    // ces lignes permettent de répéter la texture sur la géométrie choisie, afin de ne pas avoir une texture étirée
+    // qui aurait un rendu moche, comme si une image en 200x200px était étirée pour en faire 1000x1000.
     colorMap.wrapS = THREE.RepeatWrapping;
     colorMap.wrapT = THREE.RepeatWrapping;
     colorMap.repeat.set(50, 50);
@@ -99,26 +106,32 @@ export function init() {
     aoMap.repeat.set(50, 50);
 
 
+    // création du sol, plus assignation des textures sur la géométrie
     let floor = new THREE.Mesh(new THREE.PlaneGeometry(500, 500), new THREE.MeshPhongMaterial({
         map : colorMap,
         normalMap : normalMap,
         aoMap : aoMap,
-        // color : 0xffffff,
         side: THREE.DoubleSide
     }));
 
+    // le sol est tourné afin d'être perpendiculaire au personnage, donc être un sol sur lequel il peut poser ses pieds
     floor.rotation.x = Math.PI/2
     floor.position.set(0, -1, 0)
     scene.add(floor)
 
+    // instaciation d'une horloge afin de pouvoir calculé le temps passé depuis x action
     clock = new THREE.Clock();
 
+    // le raycaster est ce qui va nous aider à savoir ou l'utilisateur clique
     raycaster = new THREE.Raycaster();
 
     let mouseHelper = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 10), new THREE.MeshNormalMaterial());
     mouseHelper.visible = false;
     scene.add( mouseHelper );
 
+    //une fonction qui va adapter la taille de la scène ThreeJS à la taille de l'écran si jamais cette dernière est
+    //changée, par exemple une fenête qui ne prendrait pas tout l'écran changée pour prendre tout l'écran appellerait
+    //cette fonction, et changerait la taille de la scène pour s'adapter
     window.addEventListener( 'resize', onWindowResize );
 
     function onWindowResize() {
@@ -130,6 +143,8 @@ export function init() {
 
     }
 
+    //cette fonction permet de détecter le click utilisateur. Ici, si le code détecte une collision entre l'endroit
+    //cliqué, et la cible donnée plus bas, alors il lance la fonction attackMonster
     window.addEventListener( 'pointerup', function ( event ) {
 
         if ( moved === false ) {
@@ -143,6 +158,7 @@ export function init() {
         }
     } );
 
+    //cette fonction détecte simplement si le curseur est en mouvement
     window.addEventListener( 'pointermove', onPointerMove );
 
     function onPointerMove( event ) {
@@ -153,6 +169,7 @@ export function init() {
 
     }
 
+    // cette fonction va détecter si il y a contact entre le point cliqué et la cible définie, ici la cible étant model
     function checkIntersection( x, y ) {
 
         if ( model === undefined ) return;
@@ -196,6 +213,7 @@ export function init() {
     let health;
     let damageDone;
 
+    //fonction qui va permettre de faire des dégâts au monstre
     function attackMonster()
     {
         if (isNaN(health)) health = monsterStats.health
@@ -209,8 +227,10 @@ export function init() {
         if(health <= 0) summonNewMonster();
     }
 
+    //fonction appelée pour update les dégâts du joueur au moment ou il se connecte
     getPlayerDamage()
 
+    //fonction permettant d'invoquer un nouveau monstre une fois que l'ancien est mort, et donne des pièces à l'utilisateur
     function summonNewMonster()
     {
         let updateFront = document.createElement("span");
@@ -238,6 +258,7 @@ export function init() {
     }
 
     loadMonster();
+    //fonction qui va charger le monstre voulu, ici, Soldier
     function loadMonster()
     {
         loader.load( 'models/Soldier.glb', function ( gltf ) {
@@ -273,6 +294,8 @@ export function init() {
         setHp(healthBar, 1);
     }
 
+    //fonction la plus importante du code, c'est elle qui va permettre au moteur 3D de se render 60fois par secondes
+    //ce qui va nous donner une image fluide
     function animate() {
 
         // Render loop
@@ -288,6 +311,7 @@ export function init() {
         renderer.render( scene, camera )
     }
 
+    //le renderer est l'élément qui va permettre d'afficher toute la scène threejs dans notre navigateur
     renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -295,7 +319,10 @@ export function init() {
     renderer.setSize(WIDTH, HEIGHT);
     renderer.outputEncoding = THREE.sRGBEncoding;
 
+    //ceci sert à bouger la caméra afin de pouvoir se balader sur la scène
     var controls = new OrbitControls(camera, renderer.domElement);
+    //ces 2 lignes permettent de bloquer la rotation sur l'axe y; l'utilisateur ne peut que tourner de droite à gauche
+    //ou inversement, mais pas de haut en bas ou bas en haut
     controls.minPolarAngle = Math.PI/2 - 0.60;
     controls.maxPolarAngle = Math.PI/2 - 0.60;
     controls.update();
@@ -313,6 +340,7 @@ export function init() {
     });
 
     let hasChild = false;
+    // le container est l'élément html dans lequel on va mettre notre scène
     var container = document.getElementById( 'ThreeJS' );
     if(hasChild === false && container !== null)
     {

@@ -60,29 +60,27 @@ export const RegisterForm = () => {
     return(
         <Fragment>
             {errors.map((message) => <p>{message}</p>)}
-            <form method='post' onSubmit={(e) => {handleSubmit(e)}}>
-                <label>
-                    Mail :
-                    <input type="text" value={email} onChange={handleEmailChange}/>
-                </label>
-                <br/>
-                <label>
-                    Username :
-                    <input type="text" value={username} onChange={handleUsernameChange}/>
-                </label>
-                <br/>
-                <label>
-                    Password :
-                    <input type="password" value={password} onChange={handlePasswordChange} required/>
-                </label>
-                <br/>
-                <label>
-                    Password Confirmation :
-                    <input type="password" value={passwordConfirm} onChange={handlePasswordConfirmChange} required/>
-                </label>
-                <br />
-                <input type="submit" value="Inscription" />
-            </form>
+            <div className="registerDiv">
+                <form method='post' onSubmit={(e) => {handleSubmit(e)}} className="registerForm">
+                    <label>
+                        Mail :
+                        <input type="text" value={email} onChange={handleEmailChange}/>
+                    </label>
+                    <label>
+                        Username :
+                        <input type="text" value={username} onChange={handleUsernameChange}/>
+                    </label>
+                    <label>
+                        Password :
+                        <input type="password" value={password} onChange={handlePasswordChange} required/>
+                    </label>
+                    <label>
+                        Password Confirmation :
+                        <input type="password" value={passwordConfirm} onChange={handlePasswordConfirmChange} required/>
+                    </label>
+                    <input className="registerButton" type="submit" value="Inscription" />
+                </form>
+            </div>
         </Fragment>
     )
 }

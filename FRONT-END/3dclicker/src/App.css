@@ -268,3 +268,41 @@ nav > ul li:hover .submenu
 {
     display:none;
 }
+
+.registerForm
+{
+    padding: 20px;
+    background-color: #ffffff8a;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 200px;
+    justify-content: center;
+}
+
+.registerDiv
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.registerForm label
+{
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.registerButton
+{
+    font-size: 16px;
+    padding: 5px 20px;
+    transition: 0.2s ease-in;
+}
+
+.registerButton:hover
+{
+    background-color: black;
+    color: white;
+    border: solid 2px black;
+}

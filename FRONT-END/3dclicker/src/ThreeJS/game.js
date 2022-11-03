@@ -313,8 +313,6 @@ export function init() {
 
     //le renderer est l'élément qui va permettre d'afficher toute la scène threejs dans notre navigateur
     renderer = new THREE.WebGLRenderer({antialias: true});
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(WIDTH, HEIGHT);
     renderer.outputEncoding = THREE.sRGBEncoding;
@@ -329,10 +327,10 @@ export function init() {
 
     let moved = false;
 
-    controls.addEventListener( 'change', function ()
-    {
-        moved = true;
-    });
+    // controls.addEventListener( 'change', function ()
+    // {
+    //     moved = true;
+    // });
 
     window.addEventListener( 'pointerdown', function ()
     {

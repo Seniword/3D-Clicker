@@ -12,28 +12,36 @@ import {Login} from './routes/login'
 import {RegisterForm} from "./components/forms";
 import {ClassSelection} from "./components/classSelection";
 import {Game} from "./components/game";
-import {useEffect, useState} from "react";
+import {useState} from "react";
+import instance from "./InstanceHttp";
 
 function App() {
+    const [isConnected, setIsConnected] = useState(!!localStorage.jwtToken)
+    const [money, setMoney] = useState(0)
+    const [weapons, setWeapons] = useState([])
 
-    const [logState, setLogState] = useState('')
-    const [isConnected, setIsConnected] = useState(false)
-
+    //supprime le jwt de l'utilisateur et définit l'état sur déconnecté
     const disconnect = () => {
         localStorage.removeItem('jwtToken')
+        instance.defaults.headers.common['Authorization'] = '';
         setIsConnected(false)
     }
 
-    useEffect(() => {
+    // sauvegarde les données de l'utilisateur
+    const saveUserInfos = () => {
 
-        console.log(isConnected)
+        const user = {
+            money : money,
+            weapons : weapons,
+        }
 
-        localStorage.jwtToken
-        ? setLogState(<li><Link onClick={() => {disconnect()}}>Se déconnecter</Link></li>)
-
-        : setLogState(<li><Link to="/login">Se connecter</Link></li>)
-    }, [isConnected])
-
+        instance
+            .post('/saveUserInfos', user)
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((err) => {console.error(err)})
+    }
 
   return (
       <Router>
@@ -48,14 +56,15 @@ function App() {
                           <ul className="submenu">
                               <li><Link to="/about">En savoir plus</Link></li>
                               <li><Link to="/contact">Me contacter</Link></li>
-                              {logState}
+                              {isConnected
+                                  ? <li><Link onClick={() => {saveUserInfos(); disconnect();}}>Se déconnecter</Link></li>
+
+                                  : <li><Link to="/login">Se connecter</Link></li>}
                           </ul>
                       </li>
                   </ul>
               </nav>
           </div>
-
-
 
           <Routes>
               <Route index element={<Home />} />
@@ -64,7 +73,12 @@ function App() {
               <Route path="login" element={<Login setIsConnected={setIsConnected}/>} />
               <Route path="register" element={<RegisterForm />} />
               <Route path="classSelection" element={<ClassSelection />} />
-              <Route path="game" element={<Game />} />
+              <Route path="game" element={<Game isConnected={isConnected}
+                                                money={money}
+                                                setMoney={setMoney}
+                                                weapons={weapons}
+                                                setWeapons={setWeapons}
+                                            />} />
           </Routes>
       </Router>
   )

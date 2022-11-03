@@ -6,9 +6,8 @@ import {generateAccessToken} from "../utils.js";
 export default async function signin(req, res) {
     try
     {
-        let selectQuery = 'SELECT ?? FROM ?? WHERE ?? = ?';
-        let query = mysql.format(selectQuery,["password","users", "username", req.body.username]);
-        // query = SELECT password FROM `users` where `username` = req.body.username
+        let selectQuery = 'SELECT `user_id`, `password` FROM `users` WHERE `username` = ?';
+        let query = mysql.format(selectQuery,[req.body.username]);
         connection.query(query,(err, data) => {
             if(err) {
                 console.error(err);
@@ -20,7 +19,8 @@ export default async function signin(req, res) {
                     if(result == true)
                     {
                         const user = {
-                            username : req.body.username
+                            username : req.body.username,
+                            user_id : data[0].user_id
                         }
 
                         const accessToken = generateAccessToken(user)

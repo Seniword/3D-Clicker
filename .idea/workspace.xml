@@ -5,32 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4cccb051-0ccb-4faf-a1df-6df0dc3993e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BACK-END/controllers/AuthController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BACK-END/middlewares/authenticateToken.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BACK-END/utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/public/img/mountainBG.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/InstanceHttp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/components/classSelection.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/components/game.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BACK-END/controllers/MoneyController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BACK-END/controllers/SaveUserController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BACK-END/controllers/WeaponsController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BACK-END/controllers/monsterStatsController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/ThreeJS/game.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/components/weapons.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACK-END/controllers/AuthController.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BACK-END/controllers/ClassSelectionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/controllers/ClassSelectionController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACK-END/controllers/HomeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/controllers/HomeController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACK-END/controllers/LogTypeController.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BACK-END/controllers/SigninController.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/controllers/SigninController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACK-END/controllers/SignupController.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/controllers/SignupController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACK-END/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACK-END/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACK-END/middlewares/authenticateToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/middlewares/authenticateToken.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BACK-END/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACK-END/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACK-END/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/InstanceHttp.js" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/InstanceHttp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/components/forms.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/components/forms.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/about.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/about.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/contact.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/contact.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/components/game.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/components/game.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/login.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,26 +53,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/wamp64/www/3D-Clicker/FRONT-END/3dclicker/src/routes",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/wamp64/www/mmorpg&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2022.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\3D-Clicker\FRONT-END\3dclicker\src\routes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\3D-Clicker\FRONT-END\3dclicker\public\models" />
+      <recent name="C:\wamp64\www\3D-Clicker\FRONT-END\3dclicker\public" />
       <recent name="C:\wamp64\www\3D-Clicker\FRONT-END\3dclicker\public\img" />
     </key>
   </component>
@@ -97,7 +99,20 @@
       <workItem from="1665811837912" duration="15416000" />
       <workItem from="1665990032310" duration="20187000" />
       <workItem from="1666071963745" duration="29250000" />
-      <workItem from="1666163088874" duration="8353000" />
+      <workItem from="1666163088874" duration="16409000" />
+      <workItem from="1666249811705" duration="19132000" />
+      <workItem from="1666289433844" duration="4582000" />
+      <workItem from="1666337387610" duration="20640000" />
+      <workItem from="1666528363520" duration="622000" />
+      <workItem from="1666596035881" duration="7639000" />
+      <workItem from="1666768006643" duration="21453000" />
+      <workItem from="1666859366262" duration="1699000" />
+      <workItem from="1666872742941" duration="2075000" />
+      <workItem from="1666944642753" duration="1217000" />
+      <workItem from="1667120300784" duration="595000" />
+      <workItem from="1667197934202" duration="29635000" />
+      <workItem from="1667378407470" duration="7401000" />
+      <workItem from="1667480169914" duration="110000" />
     </task>
     <servers />
   </component>

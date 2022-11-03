@@ -9,7 +9,7 @@ const {
 } = process.env;
 
 export function generateAccessToken(user) {
-    return jwt.sign(user, secret, {expiresIn: '3600s'})
+    return jwt.sign(user, secret, {expiresIn: '1d'})
 }
 
 export function generateRefreshToken(user) {

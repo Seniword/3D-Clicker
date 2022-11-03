@@ -4,44 +4,12 @@ import {connection} from "../server.js";
 export default function classSelection(req, res)
 {
     try{
-        res.setHeader("Access-Control-Allow-Header", "Content-Type")
+        let userStatsQuery = "INSERT INTO `user_stats` `user_id`, `money`, `dps`, `dpc`, `class` VALUES (?, ?, ?, ?, ?)";
 
-        let selectUser = "SELECT ?? FROM ?? WHERE ?? = ?"
+        let query = mysql.format(userStatsQuery, [req.user.user_id, 0, 0, 1, req.body.classChoice])
 
-        let selectUserQuery = mysql.format(
-            selectUser,
-            [
-                "user_id",
-                "users",
-                "username",
-                req.user.username
-            ])
-
-        connection.query(selectUserQuery, (err, response) => {
+        connection.query(query, (err, response) => {
             if(err) console.error(err);
-
-            let userStatsQuery = "INSERT INTO ?? (??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?)";
-
-            let query = mysql.format(
-                userStatsQuery,
-                [
-                    "user_stats",
-                    "user_id",
-                    "money",
-                    "dps",
-                    "dpc",
-                    "class",
-                    response[0].user_id,
-                    0,
-                    0,
-                    1,
-                    req.body.classChoice
-                ])
-
-            connection.query(query, (err, response) => {
-                if(err) console.error(err);
-                return;
-            })
             return;
         })
 

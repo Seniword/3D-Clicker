@@ -10,11 +10,11 @@ export default function authenticateToken(req, res, next) {
     const token = authHeader && authHeader.split(' ')[1];
 
     if(!token)
-        return res.status(401)
+        res.status(401);
 
     jwt.verify(token, secret, (err, user) => {
         if(err)
-            return res.status(401);
+            return res.status(401).send("access refused.");
 
         req.user = user;
         next();

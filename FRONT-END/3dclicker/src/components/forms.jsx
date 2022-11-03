@@ -49,6 +49,7 @@ export const RegisterForm = () => {
                 .post('/signup', user)
                 .then((data) => {
                     localStorage.setItem('jwtToken', data.data);
+                    instance.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('jwtToken')}`;
 
                     navigate('/classSelection');
                 })
@@ -110,12 +111,12 @@ export const ConnectionForm = (props) => {
             password : password
         }
 
-
         instance
             .post('/signin', user)
             .then((data) => {
                 localStorage.setItem('jwtToken', data.data);
-                setIsConnected(true)
+                instance.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('jwtToken')}`;
+                setIsConnected(true);
 
                 navigate('/game');
             })

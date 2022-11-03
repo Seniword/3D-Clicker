@@ -142,25 +142,27 @@ export const Weapons = (props) => {
 
     return(
             <div className="weaponsDiv">
-                <p>{weapon.name}</p>
-                <p>Qty : {weapon.quantity}</p>
-                {weapon.dpc !== 0 ?
-                    <p className="DPCWeapon">
-                        {"DPC : " + weapon.dpc}
-                    </p>
-                    : ''}
+                {weapon.name}
+                <div className="weaponsMenu">
+                    <p>Qty : {weapon.quantity}</p>
+                    {weapon.dpc !== 0 ?
+                        <p className="DPCWeapon">
+                            {"DPC : " + weapon.dpc}
+                        </p>
+                        : ''}
 
-                {weapon.dps !== 0 ?
-                    <p className="DPSWeapon">
-                        {"DPS : " + weapon.dps}
-                    </p>
-                    : ''}
+                    {weapon.dps !== 0 ?
+                        <p className="DPSWeapon">
+                            {"DPS : " + weapon.dps}
+                        </p>
+                        : ''}
 
-                <p>Price : {weapon.price}</p>
-                <div className="buttons">
-                    <div className="buyButton" onClick={buyWeapon}>Buy 1</div>
-                    <button className="plus" onClick={increaseBuyNumber}>+</button>
-                    <button className="minus" onClick={reduceBuyNumber}>-</button>
+                    <p>Price : {weapon.price}</p>
+                    <div className="buttons">
+                        <div className="buyButton" onClick={buyWeapon}>Buy 1</div>
+                        <button className="plus" onClick={increaseBuyNumber}>+</button>
+                        <button className="minus" onClick={reduceBuyNumber}>-</button>
+                    </div>
                 </div>
             </div>
         )

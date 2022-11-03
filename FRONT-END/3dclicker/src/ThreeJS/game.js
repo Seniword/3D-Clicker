@@ -26,13 +26,28 @@ const intersects = [];
 
 // ====== Global Configs ==========
 
-var WIDTH = 1000
-var HEIGHT = 600
+if(window.innerWidth <= 768)
+{
+    var WIDTH = 450
+    var HEIGHT = 500
+}
+else
+{
+    var WIDTH = 1000
+    var HEIGHT = 600
+}
+
+
+console.log(window.innerWidth, window.innerHeight)
 
 export function init() {
 
     // instanciation de la caméra utilisée sur la scène
-    camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2500);
+    camera = new THREE.PerspectiveCamera(
+        60,
+        (window.innerWidth * 100 / 80) / (window.innerHeight * 100 / 80),
+        0.1,
+        2500);
     camera.position.z = 0;
     camera.position.y = 3;
     camera.position.x = 0;
@@ -60,7 +75,7 @@ export function init() {
     pl.castShadow = true;
     scene.add(pl);
 
-    // création de la géométrie utilisée pour trouver ou l'utilisateur clique, mais non affichée sur la scène
+    // création de la géométrie utilisée pour trouver ou l'utilisateur clique, non affichée sur la scène
     const geometry = new THREE.BufferGeometry();
     geometry.setFromPoints( [ new THREE.Vector3(), new THREE.Vector3() ] );
     line = new THREE.Line( geometry, new THREE.LineBasicMaterial() );
@@ -91,7 +106,7 @@ export function init() {
     let textureLoader = new THREE.TextureLoader();
     let colorMap = textureLoader.load("../../textures/floor/forest_floor_albedo.png")
     let normalMap = textureLoader.load("../../textures/floor/forest_floor_Normal-dx.png")
-    let aoMap = textureLoader.load("../../textures/floor/forest_floor_ao.png")
+    let aoMap = textureLoader.load("../../textures/floor/forest_floor-ao.png")
 
     // ces lignes permettent de répéter la texture sur la géométrie choisie, afin de ne pas avoir une texture étirée
     // qui aurait un rendu moche, comme si une image en 200x200px était étirée pour en faire 1000x1000.

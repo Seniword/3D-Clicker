@@ -14,6 +14,13 @@ export default async function signin(req, res) {
                 return;
             }
 
+            if(data === [])
+            {
+                console.log("test")
+                res.status(400).send("No password is attached to entered username.")
+                return;
+            }
+
             return bcrypt.compare(req.body.password, data[0].password)
                 .then((result) => {
                     if(result == true)

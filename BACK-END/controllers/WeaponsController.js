@@ -55,8 +55,6 @@ export function setWeapons(req, res)
             return;
         })
 
-
-
     }
     catch(err){
         res.status(500).send(err);

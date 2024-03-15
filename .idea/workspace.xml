@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4cccb051-0ccb-4faf-a1df-6df0dc3993e9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e6f7c510-62d9-40c5-9aaa-2b0ba51a5167.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e6f7c510-62d9-40c5-9aaa-2b0ba51a5167.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACK-END/controllers/ClassSelectionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/controllers/ClassSelectionController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACK-END/controllers/SigninController.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/controllers/SigninController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACK-END/controllers/SignupController.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/controllers/SignupController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACK-END/controllers/WeaponsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/BACK-END/controllers/WeaponsController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/ThreeJS/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/ThreeJS/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/components/forms.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/components/forms.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/components/weapons.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/components/weapons.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FRONT-END/3dclicker/src/routes/login.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +51,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/wamp64/www/mmorpg&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/wamp64/www/mywebsite&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -96,7 +104,23 @@
       <workItem from="1667120300784" duration="595000" />
       <workItem from="1667197934202" duration="29635000" />
       <workItem from="1667378407470" duration="7401000" />
-      <workItem from="1667480169914" duration="5421000" />
+      <workItem from="1667480169914" duration="9676000" />
+      <workItem from="1667549474460" duration="2605000" />
+      <workItem from="1668417418071" duration="611000" />
+      <workItem from="1668505538865" duration="1203000" />
+      <workItem from="1668585784042" duration="590000" />
+      <workItem from="1669395034641" duration="5154000" />
+      <workItem from="1670420281868" duration="184000" />
+      <workItem from="1670420660207" duration="981000" />
+      <workItem from="1670851656633" duration="2143000" />
+      <workItem from="1671224646062" duration="1274000" />
+      <workItem from="1673520443590" duration="1270000" />
+      <workItem from="1673603083092" duration="2559000" />
+      <workItem from="1673617063904" duration="1311000" />
+      <workItem from="1675246533562" duration="1787000" />
+      <workItem from="1690269436181" duration="2542000" />
+      <workItem from="1690802049879" duration="41000" />
+      <workItem from="1690802191448" duration="605000" />
     </task>
     <servers />
   </component>

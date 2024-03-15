@@ -28,6 +28,12 @@ export const RegisterForm = () => {
         setPasswordConfirm(e.target.value);
     }
 
+    const showLoginForm = (e) => {
+        e.preventDefault();
+
+        navigate("/login");
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -53,7 +59,7 @@ export const RegisterForm = () => {
 
                     navigate('/classSelection');
                 })
-                .catch((err) => console.error(err));
+                .catch((err) => setErrors(prevState => [...prevState, err.response.data]));
         }
     }
 
@@ -81,6 +87,8 @@ export const RegisterForm = () => {
                     <input className="registerButton" type="submit" value="Inscription" />
                 </form>
             </div>
+            <p className="centered">Vous avez déjà un compte ?</p>
+            <a className="centered" href="login" onClick={showLoginForm}>Connectez-vous ici.</a>
         </Fragment>
     )
 }
@@ -122,16 +130,19 @@ export const ConnectionForm = (props) => {
     }
 
     return(
-        <form method="post" onSubmit={(e) => {handleSubmit(e)}}>
-            <label>
-                Nom d'utilisateur :
-                <input type="text" value={username} onChange={handleUsernameChange} />
-            </label>
-            <label>
-                Mot de passe :
-                <input type="password" value={password} onChange={handlePasswordChange} />
-            </label>
-            <input type="submit" value="Me connecter" />
-        </form>
+        <div className="registerDiv">
+            <form method="post" onSubmit={(e) => {handleSubmit(e)}} className="registerForm">
+                <label>
+                    Nom d'utilisateur :
+                    <input type="text" value={username} onChange={handleUsernameChange} />
+                </label>
+                <label>
+                    Mot de passe :
+                    <input type="password" value={password} onChange={handlePasswordChange} />
+                </label>
+                <input type="submit" value="Me connecter" className="registerButton"/>
+            </form>
+        </div>
+
         )
 }

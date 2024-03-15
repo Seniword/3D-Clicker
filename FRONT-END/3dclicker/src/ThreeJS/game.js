@@ -14,6 +14,9 @@ let weapons = [];
 let DPSsum = 0;
 let DPCsum = 0;
 
+let time = 0;
+let random = 0;
+
 let monsterStats = {}
 
 const intersection = {
@@ -134,7 +137,7 @@ export function init() {
     floor.position.set(0, -1, 0)
     scene.add(floor)
 
-    // instaciation d'une horloge afin de pouvoir calculé le temps passé depuis x action
+    // instanciation d'une horloge afin de pouvoir calculer le temps passé depuis x action
     clock = new THREE.Clock();
 
     // le raycaster est ce qui va nous aider à savoir ou l'utilisateur clique
@@ -235,11 +238,36 @@ export function init() {
 
         damageDone = (DPCsum / monsterStats.health) * 100; // damage done in %hp
 
-        health -= damageDone;
+        health -= (damageDone * monsterStats.health) / 100; // damage retranslated from %hp to flat hp stat
 
-        setHp(healthBar, health/100)
+
+
+        if(random == 1)
+            setHp(healthBar, health/(monsterStats.health * 5));
+        else
+            setHp(healthBar, health/monsterStats.health);
 
         if(health <= 0) summonNewMonster();
+    }
+
+    function dealDPSToMonster()
+    {
+        if(Math.round(clock.elapsedTime) > time)
+        {
+            if (isNaN(health)) health = monsterStats.health
+
+            time = Math.round(clock.elapsedTime);
+            damageDone = (DPSsum / monsterStats.health) * 100; // damage done in %hp
+
+            health -= damageDone;
+
+            if(random == 1)
+                setHp(healthBar, health/(monsterStats.health * 5));
+            else
+                setHp(healthBar, health/monsterStats.health);
+
+            if(health <= 0) summonNewMonster();
+        }
     }
 
     //fonction appelée pour update les dégâts du joueur au moment ou il se connecte
@@ -276,10 +304,24 @@ export function init() {
     //fonction qui va charger le monstre voulu, ici, Soldier
     function loadMonster()
     {
+        health = monsterStats.health;
+        setHp(healthBar, 1);
+
         loader.load( 'models/Soldier.glb', function ( gltf ) {
 
             model = gltf.scene;
             scene.add(model);
+
+            random = Math.round(Math.random() * 10);
+            if(random == 1)
+            {
+                health = monsterStats.health * 5;
+                setHp(healthBar, 1);
+
+                model.children[0].children[1].material.color.r = 0
+                model.children[0].children[2].material.color.g = 0
+                model.children[0].children[2].material.color.b = 1
+            }
 
             model.name = "Soldier";
 
@@ -303,10 +345,8 @@ export function init() {
                 .catch((err) => console.error(err))
 
             animate();
-        });
 
-        health = monsterStats.health;
-        setHp(healthBar, 1);
+        });
     }
 
     //fonction la plus importante du code, c'est elle qui va permettre au moteur 3D de se render 60fois par secondes
@@ -320,6 +360,8 @@ export function init() {
         controls.update();
 
         let delta = clock.getDelta();
+
+        dealDPSToMonster();
 
         mixer.update(delta);
 
@@ -372,8 +414,8 @@ export function getPlayerDamage()
         .then((data) => {
             instance
                 .post("/getWeaponData", data.data)
-                .then((data) => {
-                    weapons = data.data;
+                .then((dataRes) => {
+                    weapons = dataRes.data;
                     weapons.forEach(weapon => {
                         DPSsum += weapon.dps * weapon.quantity;
                         DPCsum += weapon.dpc * weapon.quantity;

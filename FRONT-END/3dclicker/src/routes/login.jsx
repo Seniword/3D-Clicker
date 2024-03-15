@@ -18,8 +18,8 @@ export const Login = (props) => {
         <Fragment>
             <ConnectionForm setIsConnected={setIsConnected}/>
 
-            <p>Vous n'avez pas de compte ?</p>
-            <a href="register" onClick={showRegisterForm}>Créez-en un ici.</a>
+            <p className="centered">Vous n'avez pas de compte ?</p>
+            <a className="centered" href="register" onClick={showRegisterForm}>Créez-en un ici.</a>
         </Fragment>
     )
 }

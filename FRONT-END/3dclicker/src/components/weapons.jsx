@@ -5,6 +5,8 @@ export const Weapons = (props) => {
 
     const {weapon, money, setMoney} = props;
 
+    console.log(weapon);
+
     // function permettant d'incrémenter le nombre d'objet à acheter en un clic
     const increaseBuyNumber = (e) => {
         let div = e.target.parentNode;
@@ -70,10 +72,6 @@ export const Weapons = (props) => {
                         .catch((err) => console.error(err));
 
                 }
-                else
-                {
-                    return;
-                }
                 break;
 
             case "Buy 10" :
@@ -89,10 +87,6 @@ export const Weapons = (props) => {
                         .post("/setWeapons", {quantity: weapon.quantity, name: weapon.name})
                         .then(() => getPlayerDamage())
                         .catch((err) => console.error(err))
-                }
-                else
-                {
-                    console.log("cant buy");
                 }
                 break;
 
@@ -110,12 +104,6 @@ export const Weapons = (props) => {
                         .post("/setWeapons", {quantity: weapon.quantity, name: weapon.name})
                         .then(() => getPlayerDamage())
                         .catch((err) => console.error(err))
-
-                    getPlayerDamage();
-                }
-                else
-                {
-                    return;
                 }
                 break;
 
@@ -133,8 +121,6 @@ export const Weapons = (props) => {
                     .post("/setWeapons", {quantity: weapon.quantity, name: weapon.name})
                     .then(() => getPlayerDamage())
                     .catch((err) => console.error(err))
-
-                getPlayerDamage();
                 break;
         }
     }

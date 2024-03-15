@@ -59,35 +59,35 @@ export default function signup(req, res) {
             return;
         }
 
-        let insertQuery = "INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)";
+        let getLastIdQuery = "SELECT `user_id` FROM `users` ORDER BY `user_id` DESC"
+        let lastId = mysql.format(getLastIdQuery);
 
-        let query = mysql.format(
-            insertQuery,
-            [
-                "users",
-                "email",
-                "username",
-                "password",
-                req.body.email,
-                req.body.username,
-                ""
-            ]);
-
-        const user = {
-            username : req.body.username,
-        }
-
-        encryptPassword(req.body.password, req.body.email);
-
-        connection.query(query, (err, response) => {
+        connection.query(lastId, (err, response) => {
             if (err) {
-                res.status(400).send("Username already taken.")
+                res.status(400).send("Something wrong happened.")
                 return;
             }
 
-            const accessToken = generateAccessToken(user)
-            res.status(200).send(accessToken);
+            let insertQuery = "INSERT INTO `users` (`email`, `username`, `password`) VALUES (?, ?, ?)";
 
+            let query = mysql.format(insertQuery, [req.body.email, req.body.username, ""]);
+
+            const user = {
+                username : req.body.username,
+                user_id : response[0].user_id + 1
+            }
+
+            encryptPassword(req.body.password, req.body.email);
+
+            connection.query(query, (err, response) => {
+                if (err) {
+                    res.status(400).send("Le nom d'utilisateur choisi est déjà pris. Veuillez en choisir un autre.")
+                    return;
+                }
+
+                const accessToken = generateAccessToken(user)
+                res.status(200).send(accessToken);
+            });
         });
 
 
